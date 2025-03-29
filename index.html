@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive SVM C Parameter</title>
+    <meta charset="utf-8">
+    <!-- Include Plotly.js library -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <style> /* Optional basic styling */
+        body { font-family: sans-serif; padding: 20px; }
+        .slider-container { margin-bottom: 20px; }
+        #cValueDisplay { margin-left: 10px; font-weight: bold; }
+        #svmPlot { width: 90%; max-width: 600px; height: 450px; }
+    </style>
+</head>
+<body>
+
+    <h1>SVM C Hyperparameter Visualization</h1>
+    <p>Adjust the slider to see how the C value (regularization strength) affects the margin width and support vectors.</p>
+    <p>Small C = Wider Margin (more tolerance for misclassification). Large C = Narrower Margin (less tolerance).</p>
+
+    <div class="slider-container">
+        <label for="cSlider">log10(C):</label>
+        <!-- Slider values will be indices [0, 1, 2...] into our data array -->
+        <input type="range" id="cSlider" min="0" max="10" step="1" value="3"> <!-- Adjust max based on #steps in python -->
+        <span id="cValueDisplay">C = ?</span>
+    </div>
+
+    <!-- Div where the plot will be drawn -->
+    <div id="svmPlot"></div>
+
+    <!-- Load the pre-calculated data FIRST -->
+    <script src="svm_data.js"></script>
+
+    <!-- Load the JavaScript logic that uses the data -->
+    <script src="script.js"></script>
+
+</body>
+</html>
